@@ -65,6 +65,7 @@ export default {
                 return "Storlekstyp"
         },
         showSize() {
+            // Edit bump
             return this.shoeSize
         },
         basis() {
