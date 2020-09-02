@@ -1,24 +1,27 @@
 <template>
     <div class="search-overlay">
         <button class="menu" v-on:click="showOrClose"></button>
-        <input type="text" class="search-field" v-model="userInput"/>
+        <input type="text" id="search-input" class="search-field" v-model="userInput"/>
          <label id="shoe-size-category">
-            <p> {{ showSizeCat }} </p>
-            <input type="range" min="1" max="3" v-model="size">
+            <p> {{ showSizeClass }} </p>
+            <input type="range" id="shoeSize-range" min="1" max="2" v-model="sizeClass">
         </label>
        <label id="shoe-size">
-            <p> example </p>
-            <input type="range" min="24" max="45">
+            <p> {{ showSize }} </p>
+            <input type="range" id="kids-range" min="26" max="37" v-model="shoeSize"
+            v-if="kidSize">
+            <input type="range" id="adults-range" min="36" max="47" v-model="shoeSize"
+            v-else>
         </label>
         <label id="basis-type">
-            <p> example </p>
-            <input type="range" min="1" max="3">
+            <p> {{ basis }} </p>
+            <input type="range" id="basis-range" min="1" max="3" v-model="basisType">
         </label>
         <label id="shoe-brand">
-            <p> example </p>
-            <input type="range" min="1" max="5">
+            <p> {{ brand }} </p>
+            <input type="range" id="brand-range" min="0" max="4" valuev-model="shoeBrand">
         </label>
-         <button class="search"></button> 
+         <button class="search" v-on:click="searched"></button> 
 
     </div>
 </template>
@@ -28,24 +31,58 @@ export default {
     data: function() {
         return {
             userInput: '',
-            size: ''
+            sizeClass: '',
+            shoeSize: 'Storlek',
+            basisType: '',
+            shoeBrand: '5'
         }
     },
     methods: {
-        showOrClose() {
-            this.$emit("show-close")
+        async showOrClose() {
+           await this.$emit("showClose")
+        },
+        async searched() {
+            await this.$emit("searchAndClose")
         }
     },
     computed: {
-        showSizeCat() {
-            if (this.size == 1) {
-                return "Man"
+        kidSize() {
+            if (this.sizeClass == 1) {
+                return false
             }
-            else if (this.size == 2) {
-                return "Damer"
+            else (this.sizeClass == 2)  
+                return true
+         
+        },
+        showSizeClass() {
+            if (this.sizeClass == 1) {
+                return "Vuxna"
             }
-            else (this.size == 3) 
+            else if (this.sizeClass == 2) {
                 return "Junior"
+            }  
+            else 
+                return "Storlekstyp"
+        },
+        showSize() {
+            return this.shoeSize
+        },
+        basis() {
+            if (this.basisType == 1) {
+                return "Gräs"
+            }
+            else if (this.basisType == 2) {
+                return "Konstgräs"
+            }
+            else if (this.basisType == 3) {
+                return "Inomhus"
+            }
+            else 
+                return "Underlag"
+        },
+        brand() {
+            let array = ["Volvo", "Ferrari", "Renault", "Toyota", "Haas", "Märke"]
+            return array[this.shoeBrand]
         }
     }
 }

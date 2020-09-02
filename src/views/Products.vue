@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <SearchFilter v-on:show-close="toggleSearch" v-if="showSearch"/>
+    <SearchFilter v-on:showClose="toggleSearch" v-on:searchAndClose="searched" v-if="showSearch"/>
     <img alt="Vue logo" src="../assets/logo.png" />
     <ul>
       <li v-for="item of productList" :key="item.id">{{ item.brand }} {{ item.type }}, {{ item.price }}</li>
@@ -23,6 +23,9 @@ export default {
   methods: {
     toggleSearch() {
       this.showSearch = !this.showSearch
+    },
+    searched() {
+      this.showSearch = false
     }
   }
 }
