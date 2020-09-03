@@ -12,17 +12,13 @@
 </template>
 
 <script>
-
 import SearchFilter from '../components/SearchFilter'
-
 import ProductList from '../components/ProductList';
-
 
 export default {
   name: 'Products',
   data() {
     return {
-
       productList: this.$store.state.productList,
       showSearch: true
     }
@@ -39,10 +35,6 @@ export default {
       //productList: this.$store.state.productList
 
     }
-  },
-  components: {
-    ProductList
-
   }
 }
 </script>
