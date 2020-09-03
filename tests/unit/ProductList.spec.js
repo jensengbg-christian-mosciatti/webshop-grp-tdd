@@ -1,8 +1,8 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import Products from '@/components/productList.vue'
+import Products from '@/components/ProductList.vue'
 //import ProductList from '@/assets/db/products/products.json'
 
-describe('Products.vue', () => {
+describe('ProductList.vue', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = shallowMount(Products);
@@ -52,13 +52,13 @@ describe('Products.vue', () => {
       expect(wrapper.findAll('.product-icon').exists()).toBe(false)
     })*/
 
-    /*it('should display details of the product when clicked on', async () => {
+    it('should display details of the product when clicked on', async () => {
       const wrapper = mount(Products)
 
       const detailButton = wrapper.find('.detail-button')
 
       await detailButton.trigger('click');
-    })*/
+    })
 
 
 
