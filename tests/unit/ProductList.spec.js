@@ -52,12 +52,22 @@ describe('ProductList.vue', () => {
       expect(wrapper.findAll('.product-icon').exists()).toBe(false)
     })*/
 
-    it('should display details of the product when clicked on', async () => {
-      const wrapper = mount(Products)
+    it('should display details of the product on a new page', () => {
+      const $route = {
+        path: '/productdetails'
+      }
 
-      const detailButton = wrapper.find('.detail-button')
+      const wrapper = shallowMount(Products, {
+        mocks: {
+          $route
+        }
+      })
 
-      await detailButton.trigger('click');
+      wrapper.vm.$route.productdetails
+    })
+
+    it('should display details of the product when clicked on', () => {
+
     })
 
 
