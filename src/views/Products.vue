@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-
     <SearchFilter v-on:showClose="toggleSearch" v-on:searchAndClose="searched" v-if="showSearch"/>
-    <img alt="Vue logo" src="../assets/logo.png" />
-
     <ul>
       <!--<li class="productList" v-for="item of productList" :key="item.id"> <img class="images" :src="item.img" alt="images"> {{ item.brand }} {{ item.type }}, {{ item.price }} </li>-->
       <ProductList />
@@ -14,7 +11,6 @@
 <script>
 
 import SearchFilter from '../components/SearchFilter'
-
 import ProductList from '../components/ProductList';
 
 
@@ -22,7 +18,6 @@ export default {
   name: 'Products',
   data() {
     return {
-
       productList: this.$store.state.productList,
       showSearch: true
     }

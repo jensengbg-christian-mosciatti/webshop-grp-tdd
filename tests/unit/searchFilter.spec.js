@@ -1,10 +1,14 @@
 import { shallowMount } from "@vue/test-utils";
 import SearchFilter from "@/components/SearchFilter.vue";
 import '@testing-library/jest-dom'
+import ProductList from '@/assets/img/products.json'
+
+const productData = ProductList
 
 
 describe("SearchFilter.vue", () => {
     let wrapper
+    console.log('This is productData ', productData)
     beforeEach(() => {
         wrapper = shallowMount(SearchFilter)
     })
