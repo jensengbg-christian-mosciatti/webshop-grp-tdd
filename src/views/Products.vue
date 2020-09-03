@@ -27,7 +27,7 @@ export default {
       showSearch: true
     }
   },
-  components: { SearchFilter },
+  components: { SearchFilter, ProductList },
   methods: {
     toggleSearch() {
       this.showSearch = !this.showSearch
@@ -39,11 +39,6 @@ export default {
       //productList: this.$store.state.productList
 
     }
-  },
-  components: {
-    ProductList
-
-  }
 }
 </script>
 
