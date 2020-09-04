@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <SearchFilter v-on:showClose="toggleSearch" v-on:searchAndClose="searched" v-if="showSearch" />
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <button @click="toggleSearch">Search</button>
@@ -36,6 +37,7 @@ export default {
     searched() {
       this.showSearch = false
     },
+
 
     //productList: this.$store.state.productList
   },

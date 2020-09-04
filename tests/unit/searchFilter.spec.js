@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import SearchFilter from "@/components/SearchFilter.vue";
-import '@testing-library/jest-dom'
+//import '@testing-library/jest-dom'
 
 
 describe("SearchFilter.vue", () => {
@@ -9,9 +9,9 @@ describe("SearchFilter.vue", () => {
         wrapper = shallowMount(SearchFilter)
     })
 
-/* 
-Som användare vill jag kunna filtrera listan. 
-Som användare vill jag ha enkel tillgång till sökfunktionen. 
+/*
+Som användare vill jag kunna filtrera listan.
+Som användare vill jag ha enkel tillgång till sökfunktionen.
 Som användare vill jag att filtret ska ge mig möjlighet att välja underlag.
 Som användare vill jag att filtret ska ge mig möjlighet att välja märke.
 Som användare vill jag att filtret ska ge mig möjlighet att välja storleksklass.
@@ -40,7 +40,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
     it("should open the search overlay when clicked again", async () => {
 
     })
-    
+
 
     // Input fältet's tester
     it("should show the inputfield when loaded", () => {
@@ -57,7 +57,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
 
         expect(actual).toBe(expected)
     })
-    
+
 
     // Filtreringens tester
     it("should show the filters when loaded", () => {
@@ -112,8 +112,8 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
 
         expect(expected).toBe(actual)
     })
-    
-    
+
+
     // Sök knappens tester
     it("should show the shoe-brand search button when loaded", () => {
         const button = wrapper.get(".search");
