@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <section>
     <h1>Products</h1>
     <!-- <button v-on:click="getProductData">Show Products</button> -->
     <div v-for="productData in productDataList" :key="productData.id" class="product-data">
-      <div class="product-stats detail-button">
-        <div class="product-icon">
+      <div @click="goToDetails" class="product-stats detail-button">
+        <div class="image">
           <img :src="productData.img" alt="products" />
         </div>
         <div class="brand size">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -33,6 +33,9 @@ export default {
     productDataList: Array,
   },
   methods: {
+      goToDetails() {
+          this.$router.push('/productdetails')
+      }
     // getProductData() {
     //   fetch('products.json')
     //     .then(response => response.json())
@@ -52,7 +55,7 @@ export default {
   padding: 20px;
 }
 
-.product-icon {
+.image {
   flex-grow: 1;
 }
 

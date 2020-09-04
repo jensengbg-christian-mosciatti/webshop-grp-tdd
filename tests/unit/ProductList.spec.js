@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Products from '@/components/ProductList.vue'
 import productList from '@/assets/db/products/products.json'
 
@@ -12,49 +12,73 @@ describe('ProductList.vue', () => {
     })
   })
 
-  it('should display the brand of the product when rendered', () => {
-    // const wrapper = mount(Products)
+  // Som användare vill jag kunna se produkterna tydligt med en gång
+  /*it('should display all products in the productlist', () => {
+    const expected = propsData;
 
-    expect(wrapper.exists()).toBe(true)
-    expect(wrapper.find('.brand').exists()).toBe(false)
-    expect(wrapper.findAll('div').exists()).toBe(true)
-    expect(wrapper.findAll('.brand').exists()).toBe(false)
+    const allProducts = wrapper.findAll('div');
+
+    expect(allProducts.exists()).toBe(expected);
+  })*/
+
+  // Som användare vill jag kunna se bild, märke, storlekstyp, namn och pris på produkten
+  it('should display the image of the product in the productlist', () => {
+    const image = wrapper.get(".image");
+
+    expect(image.exists()).toBe(true);
   })
 
-  it('should display the size of the product when rendered', () => {
-    // const wrapper = mount(Products)
+  it('should display the brand of the product in the productlist', () => {
+    const brand = wrapper.get(".brand");
 
-    expect(wrapper.exists()).toBe(true)
-    expect(wrapper.find('.size').exists()).toBe(false)
-    expect(wrapper.findAll('div').exists()).toBe(true)
-    expect(wrapper.findAll('.size').exists()).toBe(false)
+    expect(brand.exists()).toBe(true);
   })
 
-  it('should display the type of the product when rendered', () => {
-    // const wrapper = mount(Products)
+  it('should display the size of the product in the productlist', () => {
+    const size = wrapper.get(".size");
 
-    expect(wrapper.exists()).toBe(true)
-    expect(wrapper.find('.type').exists()).toBe(false)
-    expect(wrapper.findAll('div').exists()).toBe(true)
-    expect(wrapper.findAll('.type').exists()).toBe(false)
+    expect(size.exists()).toBe(true);
   })
 
-  it('should display the price of the product when rendered', () => {
-    // const wrapper = mount(Products)
+  it('should display the type of the product in the productlist', () => {
+    const type = wrapper.get(".type");
 
-    expect(wrapper.exists()).toBe(true)
-    expect(wrapper.find('.price').exists()).toBe(false)
-    expect(wrapper.findAll('div').exists()).toBe(true)
-    expect(wrapper.findAll('.price').exists()).toBe(false)
+    expect(type.exists()).toBe(true);
   })
 
-  /*it('should display the image of the product when rendered', () => {
-      const wrapper = mount(Products)
-      expect(wrapper.exists()).toBe(true)
-      expect(wrapper.find('.product-icon').exists()).toBe(false)
-      expect(wrapper.findAll('img').exists()).toBe(true)
-      expect(wrapper.findAll('.product-icon').exists()).toBe(false)
+  it('should display the price of the product in the productlist', () => {
+    const price = wrapper.get(".price");
+
+    expect(price.exists()).toBe(true);
+  })
+
+  // Som användare vill jag se detaljen på produkten i en separat sida
+    it('should display details of the product on a new page', () => {
+      const $route = {
+        path: '/productdetails'
+      }
+
+      const wrapper = shallowMount(Products, {
+        mocks: {
+          $route
+        }
+      })
+
+      wrapper.vm.$route.productdetails
+    })
+
+    // Som användare vill jag kunna klicka på produkten för att se den i detalj
+    /*it('should display details of the product when clicked on', async () => {
+      // const wrapper = mount(Products)
+
+      const detailButton = wrapper.find('.detail-button')
+
+      await detailButton.trigger('click')
     })*/
+
+
+
+
 
 
 
