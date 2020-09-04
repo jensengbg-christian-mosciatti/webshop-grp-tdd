@@ -8,18 +8,42 @@ const productData = ProductList
 
 describe("SearchFilter.vue", () => {
     let wrapper
-    console.log('This is productData ', productData)
+    //console.log('This is productData ', productData)
     beforeEach(() => {
-        wrapper = shallowMount(SearchFilter)
+        wrapper = shallowMount(SearchFilter, {
+            propsData: {
+                products: productData
+            },
+        })
     })
 
-/* 
-Som användare vill jag kunna filtrera listan. 
-Som användare vill jag ha enkel tillgång till sökfunktionen. 
-Som användare vill jag att filtret ska ge mig möjlighet att välja underlag.
-Som användare vill jag att filtret ska ge mig möjlighet att välja märke.
-Som användare vill jag att filtret ska ge mig möjlighet att välja storleksklass.
-*/
+    /* 
+    Som användare vill jag kunna filtrera listan. 
+    Som användare vill jag ha enkel tillgång till sökfunktionen. 
+    Som användare vill jag att filtret ska ge mig möjlighet att välja underlag.
+    Som användare vill jag att filtret ska ge mig möjlighet att välja märke.
+    Som användare vill jag att filtret ska ge mig möjlighet att välja storleksklass.
+    */
+
+    it("should return a filtered list when selecting a brand", async () => {
+        let list = wrapper.vm.products
+        //console.log("Här", list)
+        let expected = []
+        for(let x = 0; x < list.length; x++) {
+            let obj = (list[x])
+            if (obj.brand == "puma") {
+                expected.push(obj)
+            
+            }
+        }
+        console.log(expected)
+        let button = wrapper.get(".search");
+        let input = wrapper.get("#brand-range")
+        await input.setValue("puma")
+        await button.trigger("click")
+        let actual = wrapper.vm.filteredList
+        expect(expected).toBe(actual)
+    })
 
 
     // Meny knappens tester
@@ -36,7 +60,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         //await wrapper.vm.$emit('showClose')
         //await wrapper.vm.$nextTick()
         let example = wrapper.emitted()
-        console.log(example)
+        //console.log(example)
         expect(wrapper.emitted()).toBeTruthy()
     })
 
@@ -74,7 +98,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         let testChoice = 2;
         await inputRange.setValue(testChoice)
 
-        let expected = "Junior"
+        let expected = "kids"
         let p = wrapper.findAll("p").at(0)
         let actual = p.text()
 
@@ -129,7 +153,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         await button.trigger("click")
 
         let hope = wrapper.emitted()
-        console.log(hope)
+        //console.log(hope)
         expect(wrapper.emitted()).toBeTruthy()
     })
 })

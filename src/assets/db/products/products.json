@@ -13,7 +13,7 @@
         "brand": "adidas",
         "type": "Predator Mutator 20+ FG M fotbollsskor",
         "price": 2749,
-        "size": "adult"
+        "size": "adults"
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "brand": "adidas",
         "type": "NEMEZIZ MESSI 19.1 FG J fotbollsskor",
         "price": 1099,
-        "size": "adult"
+        "size": "adults"
     },
     {
         "id": 4,
@@ -61,7 +61,7 @@
         "brand": "puma",
         "type": "Ultra 4.1 FG/AG M fotbollsskor",
         "price": 549,
-        "size": "adult"
+        "size": "adults"
     },
     {
         "id": 9,
@@ -69,6 +69,6 @@
         "brand": "puma",
         "type": "King Top FG fotbollsskor",
         "price": 1499,
-        "size": "adult"
+        "size": "adults"
     }
 ]

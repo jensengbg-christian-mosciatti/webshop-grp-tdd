@@ -3,21 +3,21 @@
     <button class="menu" v-on:click="showOrClose"></button>
     <input type="text" id="search-input" class="search-field" v-model="userInput" />
     <label id="shoe-size-category">
-      <p>{{ showSizeClass }}</p>
-      <input type="range" id="shoeSize-range" min="1" max="2" v-model="sizeClass" />
+      <p> Storlekstyp: {{ showSizeClass }}</p>
+      <input type="range" id="shoeSize-range" min="0" max="2" v-model="sizeClass" />
     </label>
     <label id="shoe-size">
-      <p>{{ showSize }}</p>
+      <p>Storlek: {{ showSize }}</p>
       <input type="range" id="kids-range" min="26" max="37" v-model="shoeSize" v-if="kidSize" />
       <input type="range" id="adults-range" min="36" max="47" v-model="shoeSize" v-else />
     </label>
     <label id="basis-type">
-      <p>{{ basis }}</p>
-      <input type="range" id="basis-range" min="1" max="3" v-model="basisType" />
+      <p> Underlag: {{ basis }}</p>
+      <input type="range" id="basis-range" min="0" max="3" v-model="basisType"/>
     </label>
     <label id="shoe-brand">
-      <p>{{ brand }}</p>
-      <input type="range" id="brand-range" min="0" max="4" valuev-model="shoeBrand" />
+      <p> Märke: {{ brand }}</p>
+      <input type="range" id="brand-range" min="0" max="3" v-model="shoeBrand"/>
     </label>
     <button class="search" v-on:click="searched"></button>
   </div>
@@ -25,55 +25,71 @@
 
 <script>
 export default {
-  data: function() {
+    data: function() {
     return {
-      userInput: '',
-      sizeClass: '',
-      shoeSize: 'Storlek',
-      basisType: '',
-      shoeBrand: '5',
+        userInput: '',
+        sizeClass: '',
+        shoeSize: '',
+        basisType: '',
+        shoeBrand: '',
+        filteredList: [],
     }
-  },
-  methods: {
-    async showOrClose() {
-      await this.$emit('showClose')
     },
-    async searched() {
-      await this.$emit('searchAndClose')
+    props: {
+      products: Array
     },
-  },
-  computed: {
-    kidSize() {
-      if (this.sizeClass == 1) {
-        return false
-      } else this.sizeClass == 2
-      return true
+    methods: {
+        async showOrClose() {
+        await this.$emit('showClose')
+        },
+        async searched() {
+            //console.log(this.products)
+            //this.filteredList = this.products.filter(el => el.brand === this.shoeBrand && el.size === this.sizeClass)
+            this.filteredList = this.products.filter(el => {
+                let isIncluded = false
+                if (this.brand.length) isIncluded = el.brand === this.brand
+                if (this.showSizeClass != null && this.showSizeClass.length) isIncluded = el.size === this.showSizeClass
+                return isIncluded
+            })
+            /*for(let x = 0; x < this.products.length; x++) {
+                let obj = (this.products[x])
+                if (obj.brand == this.shoeBrand) {
+                    this.filteredList.push(obj)
+                
+                    }
+                }*/
+            //await this.$emit('searchAndClose')
+        }
     },
-    showSizeClass() {
-      if (this.sizeClass == 1) {
-        return 'Vuxna'
-      } else if (this.sizeClass == 2) {
-        return 'Junior'
-      } else return 'Storlekstyp'
-    },
-    showSize() {
-      // Edit bump
-      return this.shoeSize
-    },
-    basis() {
-      if (this.basisType == 1) {
-        return 'Gräs'
-      } else if (this.basisType == 2) {
-        return 'Konstgräs'
-      } else if (this.basisType == 3) {
-        return 'Inomhus'
-      } else return 'Underlag'
-    },
-    brand() {
-      let array = ['Volvo', 'Ferrari', 'Renault', 'Toyota', 'Haas', 'Märke']
-      return array[this.shoeBrand]
-    },
-  },
+    computed: {
+        kidSize() {
+            if(this.sizeClass == "kids") {
+                return true
+            } else 
+            return false
+        },
+        showSizeClass() {
+            let array = ['', 'adults', 'kids']
+            return array[this.sizeClass]
+        },
+        showSize() {
+        // Edit bump
+        return this.shoeSize
+        },
+        basis() {
+        if (this.basisType == 1) {
+            return 'Gräs'
+        } else if (this.basisType == 2) {
+            return 'Konstgräs'
+        } else if (this.basisType == 3) {
+            return 'Inomhus'
+        } return ''
+        },
+        brand() {
+        let array = ['', 'puma', 'adidas', 'nike']
+        return array[this.shoeBrand]
+        }
+    }
 }
 </script>
 
