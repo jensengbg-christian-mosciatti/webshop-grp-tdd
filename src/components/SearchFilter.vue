@@ -56,15 +56,15 @@ export default {
             //console.log(productsCopy)
           this.filteredList = productsCopy
           return this.$emit("filtered", this.filteredList)
-        },
+        }
+    },
+    computed: {
         kidSize() {
             if(this.sizeClass == "kids") {
                 return true
             } else 
             return false
-        }
-    },
-    computed: {
+        },
         shoeSizeClass() {
           let array = ['', 'adults', 'kids']
           if (this.sizeClass == '') {
