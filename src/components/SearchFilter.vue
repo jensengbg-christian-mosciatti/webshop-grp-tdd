@@ -3,13 +3,13 @@
     <button class="menu" v-on:click="showOrClose"></button>
     <input type="text" id="search-input" class="search-field" v-model="userInput" />
     <label id="shoe-size-category">
-      <p> Storlekstyp: {{ showSizeClass }}</p>
+      <p> Storlekstyp: {{ shoeSizeClass }}</p>
       <input type="range" id="shoeSize-range" min="0" max="2" v-model="sizeClass" />
     </label>
     <label id="shoe-size">
-      <p>Storlek: {{ showSize }}</p>
-      <input type="range" id="kids-range" min="26" max="37" v-model="shoeSize" v-if="kidSize" />
-      <input type="range" id="adults-range" min="36" max="47" v-model="shoeSize" v-else />
+      <p>Storlek: {{ shoeSize }}</p>
+      <input type="range" id="kids-range" min="26" max="37" v-model="size" v-if="kidSize" />
+      <input type="range" id="adults-range" min="36" max="47" v-model="size" v-else />
     </label>
     <label id="basis-type">
       <p> Underlag: {{ basis }}</p>
@@ -29,7 +29,7 @@ export default {
     return {
         userInput: '',
         sizeClass: '',
-        shoeSize: '',
+        size: '',
         basisType: '',
         shoeBrand: '',
         filteredList: [],
@@ -43,38 +43,38 @@ export default {
         await this.$emit('showClose')
         },
         async searched() {
-            //console.log(this.products)
-            //this.filteredList = this.products.filter(el => el.brand === this.shoeBrand && el.size === this.sizeClass)
-            this.filteredList = this.products.filter(el => {
-                let isIncluded = false
-                if (this.brand.length) isIncluded = el.brand === this.brand
-                if (this.showSizeClass != null && this.showSizeClass.length) isIncluded = el.size === this.showSizeClass
-                return isIncluded
-            })
-            /*for(let x = 0; x < this.products.length; x++) {
-                let obj = (this.products[x])
-                if (obj.brand == this.shoeBrand) {
-                    this.filteredList.push(obj)
-                
-                    }
-                }*/
-            //await this.$emit('searchAndClose')
-        }
-    },
-    computed: {
+            let productsCopy = this.products
+            //let brandList = []
+            if (this.brand.length) {
+              productsCopy = productsCopy.filter(el => {/*console.log();*/ return el.brand === this.brand})
+              //console.log("In the brand if", productsCopy)
+            }
+            if (this.shoeSizeClass.length) {
+              productsCopy = productsCopy.filter(el => el.size === this.shoeSizeClass)
+              //console.log('In the size if', productsCopy)
+            }
+            //console.log(productsCopy)
+          this.filteredList = productsCopy
+          return this.$emit("filtered", this.filteredList)
+        },
         kidSize() {
             if(this.sizeClass == "kids") {
                 return true
             } else 
             return false
+        }
+    },
+    computed: {
+        shoeSizeClass() {
+          let array = ['', 'adults', 'kids']
+          if (this.sizeClass == '') {
+            return ''
+          }
+          return array[this.sizeClass]
         },
-        showSizeClass() {
-            let array = ['', 'adults', 'kids']
-            return array[this.sizeClass]
-        },
-        showSize() {
+        shoeSize() {
         // Edit bump
-        return this.shoeSize
+        return this.size
         },
         basis() {
         if (this.basisType == 1) {
@@ -87,6 +87,9 @@ export default {
         },
         brand() {
         let array = ['', 'puma', 'adidas', 'nike']
+        if (this.shoeBrand == '') {
+          return ''
+        }
         return array[this.shoeBrand]
         }
     }
