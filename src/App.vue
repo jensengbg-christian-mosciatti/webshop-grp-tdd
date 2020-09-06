@@ -1,31 +1,74 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/about">About</router-link> |
-      <router-link to="/products">Products</router-link> | <router-link to="/cart">Cart</router-link> |
+    <div class="head">
+      <img :src="`${publicPath}FootWear-long.svg`" alt="logo" />
+      <div id="nav">
+        <router-link to="/about">About</router-link> | <router-link to="/products">Products</router-link> |
+        <router-link to="/cart">Cart</router-link>
+      </div>
     </div>
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      publicPath: process.env.BASE_URL,
+    }
+  },
+}
+</script>
 <style lang="scss">
+@import url('./assets/fonts/_fonts.scss');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 
-#nav {
-  padding: 30px;
+.head {
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  img {
+    max-width: 30vw;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
+  #nav {
+    // padding: 30px;
+
+    a {
+      font-weight: bold;
+      color: #2c3e50;
+
+      &.router-link-exact-active {
+        color: #42b983;
+      }
     }
   }
 }
