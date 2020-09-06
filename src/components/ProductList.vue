@@ -3,7 +3,7 @@
     <h1>Products</h1>
     <!-- <button v-on:click="getProductData">Show Products</button> -->
     <div v-for="productData in productDataList" :key="productData.id" class="product-data">
-      <div @click="goToDetails" class="product-stats detail-button">
+      <div @click="goToDetails(productData.id)" class="product-stats detail-button">
         <div class="image">
           <img :src="productData.img" alt="products" />
         </div>
@@ -33,9 +33,9 @@ export default {
     productDataList: Array,
   },
   methods: {
-      goToDetails() {
-          this.$router.push('/productdetails')
-      }
+    goToDetails(id) {
+      this.$router.push({ name: 'productdetails', params: { id: Number(id) } })
+    },
     // getProductData() {
     //   fetch('products.json')
     //     .then(response => response.json())
@@ -53,6 +53,7 @@ export default {
   margin-left: 20px;
   border-bottom: 2px solid #ccc;
   padding: 20px;
+  cursor: pointer;
 }
 
 .image {

@@ -24,11 +24,18 @@ const routes = [
     component: About,
   },
   {
-    path: '/productdetails',
-    name: 'Product Details',
+    path: '/product/:id',
+    name: 'productdetails',
     component: ProductDetails,
-  }
+    props: castId,
+  },
 ]
+
+function castId(route) {
+  return {
+    id: Number(route.params.id),
+  }
+}
 
 const router = new VueRouter({
   mode: 'history',
