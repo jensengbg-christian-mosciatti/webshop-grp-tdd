@@ -8,7 +8,7 @@
     </label>
     <label id="shoe-size">
       <p>Storlek: {{ shoeSize }}</p>
-      <input type="range" id="kids-range" min="26" max="37" v-model="size" v-if="kidSize" />
+      <input type="range" id="kids-range" min="26" max="37" v-model="size" v-if="kids" />
       <input type="range" id="adults-range" min="36" max="47" v-model="size" v-else />
     </label>
     <label id="basis-type">
@@ -25,74 +25,88 @@
 
 <script>
 export default {
-    data: function() {
+  data: function() {
     return {
         userInput: '',
         sizeClass: '',
+        kids: '',
         size: '',
         basisType: '',
         shoeBrand: '',
         filteredList: [],
     }
+  },
+  props: {
+    products: Array
+  },
+  methods: {
+    async showOrClose() {
+      await this.$emit('showClose')
     },
-    props: {
-      products: Array
+    async searched() {
+      let productsCopy = this.products
+      //let brandList = []
+      if (this.brand.length) {
+        productsCopy = productsCopy.filter(el => {/*console.log();*/ return el.brand === this.brand})
+        //console.log("In the brand if", productsCopy)
+      }
+      if (this.shoeSizeClass.length) {
+        productsCopy = productsCopy.filter(el => el.size === this.shoeSizeClass)
+         //console.log('In the size if', productsCopy)
+      }
+        //console.log(productsCopy)
+        let obj = {
+          size: this.size,
+          basis: this.basis
+        }
+        this.filteredList = productsCopy
+        return this.$emit("filtered", this.filteredList, obj)
     },
-    methods: {
-        async showOrClose() {
-        await this.$emit('showClose')
-        },
-        async searched() {
-            let productsCopy = this.products
-            //let brandList = []
-            if (this.brand.length) {
-              productsCopy = productsCopy.filter(el => {/*console.log();*/ return el.brand === this.brand})
-              //console.log("In the brand if", productsCopy)
-            }
-            if (this.shoeSizeClass.length) {
-              productsCopy = productsCopy.filter(el => el.size === this.shoeSizeClass)
-              //console.log('In the size if', productsCopy)
-            }
-            //console.log(productsCopy)
-          this.filteredList = productsCopy
-          return this.$emit("filtered", this.filteredList)
-        }
-    },
-    computed: {
-        kidSize() {
-            if(this.sizeClass == "kids") {
-                return true
-            } else 
-            return false
-        },
-        shoeSizeClass() {
-          let array = ['', 'adults', 'kids']
-          if (this.sizeClass == '') {
-            return ''
-          }
-          return array[this.sizeClass]
-        },
-        shoeSize() {
-        // Edit bump
-        return this.size
-        },
-        basis() {
-        if (this.basisType == 1) {
-            return 'Gräs'
-        } else if (this.basisType == 2) {
-            return 'Konstgräs'
-        } else if (this.basisType == 3) {
-            return 'Inomhus'
-        } return ''
-        },
-        brand() {
-        let array = ['', 'puma', 'adidas', 'nike']
-        if (this.shoeBrand == '') {
-          return ''
-        }
-        return array[this.shoeBrand]
-        }
+    kidsSize() {
+      if(this.sizeClass == 2) {
+        this.kids = true
+        return true
+      } else 
+        this.kids = false
+        return false
     }
+  },
+  computed: {
+    shoeSizeClass() {
+      let array = ['', 'adults', 'kids']
+      if (this.sizeClass == '') {
+        return ''
+      }
+        return array[this.sizeClass]
+    },
+    shoeSize() {
+      // Edit bump
+      return this.size
+    },
+    basis() {
+      if (this.basisType == 1) {
+        return 'Gräs'
+      } else if (this.basisType == 2) {
+        return 'Konstgräs'
+      } else if (this.basisType == 3) {
+        return 'Inomhus'
+      } 
+      return ''
+    },
+    brand() {
+      let array = ['', 'puma', 'adidas', 'nike']
+      if (this.shoeBrand == '') {
+        return ''
+      }
+      return array[this.shoeBrand]
+    }
+  },
+  watch: {
+    sizeClass: async function () {
+      let promise = await this.kidsSize()
+      console.log(promise)
+    }
+  }
 }
 </script>
 

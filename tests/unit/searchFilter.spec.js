@@ -116,6 +116,9 @@ describe("SearchFilter.vue", () => {
     it("should display the kids-range when size class 'kids' is selected", async () => {
         const input = wrapper.get("#shoeSize-range");
         await input.setValue(2)
+
+        let expected = wrapper.get("#kids-range");
+        expect(expected.exists()).toBe(true)
     })
 
     it("should update the basis-type filter when the range slider is moved", async () => {
@@ -124,20 +127,18 @@ describe("SearchFilter.vue", () => {
         await inputRange.setValue(testChoice)
 
         let expected = "Gräs"
-        let p = wrapper.findAll("p").at(2)
-        let actual = p.text()
+        let actual = wrapper.vm.basis
 
         expect(expected).toBe(actual)
     })
 
     it("should update the shoe-brand filter when the range slider is moved", async () => {
         const inputRange = wrapper.findAll("#brand-range")
-        let testChoice = 5;
+        let testChoice = 3;
         await inputRange.setValue(testChoice)
 
-        let expected = "Märke"
-        let p = wrapper.findAll("p").at(3)
-        let actual = p.text()
+        let expected = "nike"
+        let actual = wrapper.vm.brand
 
         expect(expected).toBe(actual)
     })
