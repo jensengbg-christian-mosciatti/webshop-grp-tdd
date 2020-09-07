@@ -1,16 +1,16 @@
 <template>
   <div class="search-overlay">
     <button class="menu" v-on:click="showOrClose"></button>
-    <input type="text" id="search-input" class="search-field" v-model="userInput" />
+     <!-- <input type="text" id="search-input" class="search-field" v-model="userInput" /> -->
     <label id="shoe-size-category">
       <p> Storlekstyp: {{ shoeSizeClass }}</p>
       <input type="range" id="shoeSize-range" min="0" max="2" v-model="sizeClass" />
     </label>
-    <label id="shoe-size">
-      <p>Storlek: {{ shoeSize }}</p>
+    <!-- <label id="shoe-size">
+      <p>Storlek: {{ shoeSize }}</p> 
       <input type="range" id="kids-range" min="26" max="37" v-model="size" v-if="kids" />
-      <input type="range" id="adults-range" min="36" max="47" v-model="size" v-else />
-    </label>
+      <input type="range" id="adults-range" min="36" max="47" v-model="size" v-else /> 
+    </label> -->
     <label id="basis-type">
       <p> Underlag: {{ basis }}</p>
       <input type="range" id="basis-range" min="0" max="3" v-model="basisType"/>
@@ -19,7 +19,7 @@
       <p> Märke: {{ brand }}</p>
       <input type="range" id="brand-range" min="0" max="3" v-model="shoeBrand"/>
     </label>
-    <button class="search" v-on:click="searched"></button>
+    <button class="search" v-on:click="searched"> <h1> SÖK </h1> </button>
   </div>
 </template>
 
@@ -55,12 +55,12 @@ export default {
          //console.log('In the size if', productsCopy)
       }
         //console.log(productsCopy)
-        let obj = {
+        /*let obj = {
           size: this.size,
           basis: this.basis
-        }
+        }*/
         this.filteredList = productsCopy
-        return this.$emit("filtered", this.filteredList, obj)
+        return this.$emit("filtered", this.filteredList)
     },
     kidsSize() {
       if(this.sizeClass == 2) {
@@ -121,12 +121,13 @@ export default {
   left: 0px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .menu {
   grid-row: 1;
   grid-column: 1;
+  background-color: var(--button-color);
 }
 
 .search-field {
@@ -134,38 +135,95 @@ export default {
   grid-column: 2/5;
 }
 
-#shoe-size-category {
-  grid-row: 3/4;
-  grid-column: 2/5;
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: black; /* Otherwise white in Chrome */
+  border: 1px black solid;
+  height: 10px;
+  border-radius: 10px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #66C52B;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #66C52B;
+  cursor: pointer;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #66C52B;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #66C52B;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #66C52B;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #66C52B;
+  cursor: pointer;
+}
+
+label {
+  font-weight: bold;
+  font-size: 18px;
+  flex-direction: column;
+  align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+p {
+  margin: 0px 0px 30px 0px;
+  border: 2px solid black;
+  padding: 7px;
+  border-radius: 5px;
+  width: 93%;
+}
+
+h1 {
+  color: var(--button-text-color)
+}
+
+#shoe-size-category {
+  grid-row: 2/3;
+  grid-column: 2/5;
 }
 
 #shoe-size {
-  grid-row: 4/5;
+  grid-row: 2/3;
   grid-column: 2/5;
-  display: flex;
-  flex-direction: column;
 }
 
 #basis-type {
+  grid-row: 3/4;
+  grid-column: 2/5;
+}
+
+#shoe-brand {
+  grid-row: 4/5;
+  grid-column: 2/5;
+}
+
+.search {
   grid-row: 5/6;
   grid-column: 2/5;
   display: flex;
   flex-direction: column;
-}
-
-#shoe-brand {
-  grid-row: 6/7;
-  grid-column: 2/5;
-  display: flex;
-  flex-direction: column;
-}
-
-.search {
-  grid-row: 7/8;
-  grid-column: 2/5;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
 }
 </style>

@@ -29,4 +29,18 @@
     }
   }
 }
+
+p {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --button-color: #66C52B;
+  --button-text-color: #ffffff;
+  --text-color: #000000;
+}
 </style>
