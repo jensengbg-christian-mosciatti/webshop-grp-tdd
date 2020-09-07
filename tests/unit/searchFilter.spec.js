@@ -5,8 +5,13 @@ import SearchFilter from "@/components/SearchFilter.vue";
 
 describe("SearchFilter.vue", () => {
     let wrapper
+    //console.log('This is productData ', productData)
     beforeEach(() => {
-        wrapper = shallowMount(SearchFilter)
+        wrapper = shallowMount(SearchFilter, {
+            propsData: {
+                products: productData
+            },
+        })
     })
 
 /*
@@ -32,7 +37,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         //await wrapper.vm.$emit('showClose')
         //await wrapper.vm.$nextTick()
         let example = wrapper.emitted()
-        console.log(example)
+        //console.log(example)
         expect(wrapper.emitted()).toBeTruthy()
     })
 
@@ -70,23 +75,28 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         let testChoice = 2;
         await inputRange.setValue(testChoice)
 
-        let expected = "Junior"
-        let p = wrapper.findAll("p").at(0)
-        let actual = p.text()
+        let expected = "kids"
+        let actual = wrapper.vm.shoeSizeClass
 
         expect(expected).toBe(actual)
     })
 
     it("should update the shoe-size filter when the range slider is moved", async () => {
-        const inputRange = wrapper.findAll("#kids-range")
+        const inputRange = wrapper.get("#adults-range")
         let testChoice = 30;
-        await inputRange.setValue(testChoice)
-
+        inputRange.setValue(testChoice)
         let expected = "30"
-        let p = wrapper.findAll("p").at(1)
-        let actual = p.text()
+        let actual = wrapper.vm.size
 
         expect(expected).toBe(actual)
+    })
+
+    it("should display the kids-range when size class 'kids' is selected", async () => {
+        const input = wrapper.get("#shoeSize-range");
+        await input.setValue(2)
+
+        let expected = wrapper.get("#kids-range");
+        expect(expected.exists()).toBe(true)
     })
 
     it("should update the basis-type filter when the range slider is moved", async () => {
@@ -95,20 +105,18 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         await inputRange.setValue(testChoice)
 
         let expected = "Gräs"
-        let p = wrapper.findAll("p").at(2)
-        let actual = p.text()
+        let actual = wrapper.vm.basis
 
         expect(expected).toBe(actual)
     })
 
     it("should update the shoe-brand filter when the range slider is moved", async () => {
         const inputRange = wrapper.findAll("#brand-range")
-        let testChoice = 5;
+        let testChoice = 3;
         await inputRange.setValue(testChoice)
 
-        let expected = "Märke"
-        let p = wrapper.findAll("p").at(3)
-        let actual = p.text()
+        let expected = "nike"
+        let actual = wrapper.vm.brand
 
         expect(expected).toBe(actual)
     })
@@ -125,7 +133,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         await button.trigger("click")
 
         let hope = wrapper.emitted()
-        console.log(hope)
+        //console.log(hope)
         expect(wrapper.emitted()).toBeTruthy()
     })
 })
