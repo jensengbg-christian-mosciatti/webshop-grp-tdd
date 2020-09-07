@@ -1,7 +1,10 @@
 <template>
+
   <section class="home">
-    <h1>Products</h1>
-    <SearchFilter v-on:showClose="toggleSearch" v-on:searchAndClose="searched" v-if="showSearch" />
+    <SearchFilter :products="productList" v-on:showClose="toggleSearch" v-on:searchAndClose="searched" 
+    v-on:filtered="example"
+    v-if="showSearch" />
+
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <button @click="toggleSearch">Filter</button>
     <!-- <ul> -->
@@ -21,13 +24,13 @@ export default {
     return {
       productList: this.$store.state.productList,
       showSearch: false,
-      filterSize: 'kids',
+      filteredList: this.$store.state.productList
     }
   },
   computed: {
-    filteredList() {
+    /*filteredList() {
       return this.productList
-    },
+    },*/
   },
   components: { SearchFilter, ProductList },
   methods: {
@@ -37,7 +40,10 @@ export default {
     searched() {
       this.showSearch = false
     },
-
+    example(param) {
+      this.filteredList = param
+      this.showSearch = !this.showSearch
+    }
     //productList: this.$store.state.productList
   },
 }
