@@ -13,13 +13,13 @@ describe('ProductList.vue', () => {
   })
 
   // Som användare vill jag kunna se produkterna tydligt med en gång
-  /*it('should display all products in the productlist', () => {
-    const expected = propsData;
+  it('should display all products in the productlist', () => {
+    const expected = true;
 
-    const allProducts = wrapper.findAll('div');
+    const allProducts = wrapper.findAll('.product-data').at(0).text();
 
-    expect(allProducts.exists()).toBe(expected);
-  })*/
+    expect(allProducts.length > 0).toBe(expected);
+  })
 
   // Som användare vill jag kunna se bild, märke, storlekstyp, namn och pris på produkten
   it('should display the image of the product in the productlist', () => {
@@ -53,7 +53,7 @@ describe('ProductList.vue', () => {
   })
 
   // Som användare vill jag se detaljen på produkten i en separat sida
-    it('should display details of the product on a new page', () => {
+    it('should display details of the product on a new page when clicked on', async () => {
       const $route = {
         path: '/productdetails'
       }
@@ -64,60 +64,21 @@ describe('ProductList.vue', () => {
         }
       })
 
+      //wrapper.findAll('.detail-button').setValue(productList);
+
+      //await detailButton.trigger('click');
+
       wrapper.vm.$route.productdetails
     })
 
     // Som användare vill jag kunna klicka på produkten för att se den i detalj
-    /*it('should display details of the product when clicked on', async () => {
-      // const wrapper = mount(Products)
+    //it('should display details of the product when clicked on', async () => {
 
-      const detailButton = wrapper.find('.detail-button')
+      //wrapper.findAll('.detail-button').trigger('click');
+      //const detailButton = await wrapper.findAll('.detail-button').trigger('click');
 
-      await detailButton.trigger('click')
-    })*/
+      //await detailButton.trigger('click');
 
-
-
-
-
-
-
-
-
-
-  // it('should display the brand of the product when rendered', () => {
-  //   const wrapper = mount(Products, {
-  //     mocks: {
-  //       $store: {
-  //         state: { productList: productList },
-  //       },
-  //     },
-  //   })
-
-  //   console.log(productList)
-  //   const firstElement = wrapper.findAll('.product-data').at(0)
-
-  //   expect(wrapper.find('.productList').text()).toBe('ProductList')
-
-  //   expect(wrapper.exists()).toBe(true)
-  //   expect(wrapper.find(item.brand).exists()).toBe(false)
-  //   expect(wrapper.findAll('li').exists()).toBe(true)
-  //   expect(wrapper.findAll(item.brand).exists()).toBe(false)
-  // })
-
-  /*it('should display the image of the product when rendered', () => {
-
-    })
-
-    it('should display the type of the product when rendered', () => {
-
-    })
-
-    it('should display the price of the product when rendered', () => {
-
-    })
-
-    it('should display details of the product when clicked on', () => {
-
-    })*/
+      //expect(productList.called).toBe(true)
+    //})
 })
