@@ -64,7 +64,7 @@ describe('ProductList.vue', () => {
         }
       })
 
-      //const detailButton = wrapper.findAll('.detail-button');
+      //wrapper.findAll('.detail-button').setValue(productList);
 
       //await detailButton.trigger('click');
 
@@ -81,49 +81,4 @@ describe('ProductList.vue', () => {
 
       //expect(productList.called).toBe(true)
     //})
-
-
-
-
-
-
-
-
-
-
-  // it('should display the brand of the product when rendered', () => {
-  //   const wrapper = mount(Products, {
-  //     mocks: {
-  //       $store: {
-  //         state: { productList: productList },
-  //       },
-  //     },
-  //   })
-
-  //   console.log(productList)
-  //   const firstElement = wrapper.findAll('.product-data').at(0)
-
-  //   expect(wrapper.find('.productList').text()).toBe('ProductList')
-
-  //   expect(wrapper.exists()).toBe(true)
-  //   expect(wrapper.find(item.brand).exists()).toBe(false)
-  //   expect(wrapper.findAll('li').exists()).toBe(true)
-  //   expect(wrapper.findAll(item.brand).exists()).toBe(false)
-  // })
-
-  /*it('should display the image of the product when rendered', () => {
-
-    })
-
-    it('should display the type of the product when rendered', () => {
-
-    })
-
-    it('should display the price of the product when rendered', () => {
-
-    })
-
-    it('should display details of the product when clicked on', () => {
-
-    })*/
 })
