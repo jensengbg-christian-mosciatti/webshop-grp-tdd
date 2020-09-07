@@ -1,6 +1,8 @@
 <template>
   <div class="search-overlay">
-    <button class="menu" v-on:click="showOrClose"></button>
+    <button class="menu" v-on:click="showOrClose">
+      <i id="exit-cross" class="far fa-times-circle"></i>
+    </button>
      <!-- <input type="text" id="search-input" class="search-field" v-model="userInput" /> -->
     <label id="shoe-size-category">
       <p> Storlekstyp: {{ shoeSizeClass }}</p>
@@ -127,7 +129,20 @@ export default {
 .menu {
   grid-row: 1;
   grid-column: 1;
-  background-color: var(--button-color);
+  background-color: black;
+  height: 45px;
+  width: 45px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin: 10px 0px 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#exit-cross {
+  color: white;
+  font-size: 38px;
 }
 
 .search-field {
@@ -189,8 +204,9 @@ p {
   margin: 0px 0px 30px 0px;
   border: 2px solid black;
   padding: 7px;
-  border-radius: 5px;
+  border-radius: 2px;
   width: 93%;
+  background-color: whitesmoke;
 }
 
 h1 {
@@ -225,5 +241,8 @@ h1 {
   justify-content: center;
   align-items: center;
   background-color: var(--button-color);
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 </style>
