@@ -124,6 +124,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  padding: 0px;
 }
 
 .menu {
@@ -198,6 +199,9 @@ label {
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  min-width: 250px;
 }
 
 p {
@@ -244,5 +248,44 @@ h1 {
   height: 50px;
   border: 1px solid black;
   border-radius: 2px;
+  justify-self: center;
+  align-self: center;
+  min-width: 250px;
+}
+
+@media only screen and (min-width: 500px) {
+  .search-overlay {
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
+
+  #shoe-size-category {
+    grid-row: 3/4;
+    grid-column: 2/5;
+  }
+
+  #basis-type {
+    grid-row: 4/5;
+    grid-column: 2/5;
+  }
+
+  #shoe-brand {
+    grid-row: 5/6;
+    grid-column: 2/5;
+  }
+  
+  label {
+    justify-self: center;
+    min-width: 300px;
+    justify-content: center
+  }
+
+  .search {
+    min-width: 300px;
+    align-self: center;
+    justify-self: center;
+    grid-row: 6/7;
+  }
 }
 </style>
