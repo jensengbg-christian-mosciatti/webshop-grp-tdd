@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="head">
-      <img :src="`${publicPath}FootWear-long.svg`" alt="logo" />
+      <img :src="`${publicPath}FootWear-long1.svg`" alt="logo" />
       <div id="nav">
         <router-link to="/about">About</router-link> | <router-link to="/products">Products</router-link> |
         <router-link to="/cart">Cart</router-link>
@@ -21,7 +21,12 @@ export default {
 }
 </script>
 <style lang="scss">
-@import url('./assets/fonts/_fonts.scss');
+@font-face {
+  font-family: 'uroobbold';
+  src: url('assets/fonts/uroob-webfont.woff2') format('woff2'), url('assets/fonts/uroob-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --button-color: #66c52b;
   --button-text-color: #ffffff;
