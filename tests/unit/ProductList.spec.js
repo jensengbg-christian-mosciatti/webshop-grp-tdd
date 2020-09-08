@@ -66,17 +66,12 @@ describe('ProductList.vue', () => {
         }
       })
 
-      const detailButton = wrapper.findAll('.detail-button');
+      const detailButton = wrapper.findAll('#button');
 
-      //await detailButton.trigger('click');
+      await detailButton.trigger('click');
 
       //expect(detailButton.length).toBe(true);
 
       wrapper.vm.$route.productdetails
-    })
-
-    // Som användare när jag vill filtrera produktlistan vill jag att filtret ska öppnas i en separat sida, eller att den läggs ovanpå
-    it('should display the filtered list as an overlay when clicking the filter button', () => {
-
     })
 })

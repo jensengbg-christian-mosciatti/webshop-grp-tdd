@@ -1,7 +1,7 @@
 <template>
   <section>
     <section v-for="productData in productDataList" :key="productData.id" class="product-data">
-      <section @click="goToDetails(productData.id)" class="product-stats detail-button">
+      <section @click="goToDetails(productData.id)" id="button" class="product-stats detail-button">
         <section class="image">
           <img :src="productData.img" alt="products" />
         </section>
