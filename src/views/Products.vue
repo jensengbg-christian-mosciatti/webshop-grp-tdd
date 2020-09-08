@@ -1,7 +1,8 @@
 <template>
 
   <section class="home">
-    <SearchFilter :products="productList" v-on:showClose="toggleSearch" v-on:searchAndClose="searched" 
+    <h1>Products</h1>
+    <SearchFilter :products="productList" v-on:showClose="toggleSearch" v-on:searchAndClose="searched"
     v-on:filtered="example"
     v-if="showSearch" />
 
@@ -55,6 +56,7 @@ h1 {
     font-size: 40px;
     margin-top: 1em;
     margin-bottom: 0.5em;
+    color: black;
   }
 .productList {
   background-color: white;

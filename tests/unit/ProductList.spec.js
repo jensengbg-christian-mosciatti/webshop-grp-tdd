@@ -1,14 +1,15 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import Products from '@/components/ProductList.vue'
 import productList from '@/assets/db/products/products.json'
+import filterButton from '@/views/Products.vue'
 
 describe('ProductList.vue', () => {
   let wrapper
   beforeEach(() => {
     wrapper = shallowMount(Products, {
       propsData: {
-        productDataList: productList,
-      },
+        productDataList: productList
+      }
     })
   })
 
@@ -53,6 +54,7 @@ describe('ProductList.vue', () => {
   })
 
   // Som användare vill jag se detaljen på produkten i en separat sida
+  // Som användare vill jag kunna klicka på produkten för att se den i detalj
     it('should display details of the product on a new page when clicked on', async () => {
       const $route = {
         path: '/productdetails'
@@ -64,21 +66,17 @@ describe('ProductList.vue', () => {
         }
       })
 
-      //wrapper.findAll('.detail-button').setValue(productList);
+      const detailButton = wrapper.findAll('.detail-button');
 
       //await detailButton.trigger('click');
+
+      //expect(detailButton.length).toBe(true);
 
       wrapper.vm.$route.productdetails
     })
 
-    // Som användare vill jag kunna klicka på produkten för att se den i detalj
-    //it('should display details of the product when clicked on', async () => {
+    // Som användare när jag vill filtrera produktlistan vill jag att filtret ska öppnas i en separat sida, eller att den läggs ovanpå
+    it('should display the filtered list as an overlay when clicking the filter button', () => {
 
-      //wrapper.findAll('.detail-button').trigger('click');
-      //const detailButton = await wrapper.findAll('.detail-button').trigger('click');
-
-      //await detailButton.trigger('click');
-
-      //expect(productList.called).toBe(true)
-    //})
+    })
 })
