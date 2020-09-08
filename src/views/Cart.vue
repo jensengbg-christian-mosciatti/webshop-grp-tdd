@@ -138,7 +138,7 @@
 
 .item-type {
   margin: 0;
-  font-size: 1.2rem;
+  // font-size: 1.2rem;
   overflow: hidden;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .item-brand {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   align-self: flex-start;
 }
 
@@ -190,12 +190,13 @@
 }
 .footer > button {
   font-family: uroobbold, sans-serif;
+  letter-spacing: 1px;
   // font-weight: 400;
   // font-style: normal;
   font-size: 2rem;
   color: rgb(238, 238, 238);
   padding: 0.7rem 1.5rem 0.1rem;
-  background-color: #66c52b;
+  background-color: var(--button-color);
   border: 1px solid #2c3e50;
 }
 </style>
