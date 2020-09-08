@@ -1,13 +1,14 @@
 <template>
   <main>
-    <div class="fallback-section" v-show="productById == null">
+    <div class="fallback-section" v-if="productById == null">
       <h2>
         Product not found
       </h2>
     </div>
-    <div class="grid-cont" v-show="productById != null">
+    <div class="grid-cont" v-else>
       <div class="img-cont">
         <div>
+          <!-- <img class="logo-img" :src="" :alt="productById.type" /> -->
           <img class="main-img" :src="currentImg.url ? currentImg.url : productById.img" :alt="productById.type" />
           <div class="img-thumbnails">
             <img
@@ -115,14 +116,14 @@ main {
     'longinfo longinfo';
 }
 
-.img-cont {
-  grid-area: pictures;
-  padding: 0.8rem;
-}
-.main-img {
-  max-width: 70vw;
-  max-height: 50vh;
-}
+/* .img-cont { */
+/* grid-area: pictures; */
+/* padding: 0.8rem; */
+/* } */
+/* .main-img { */
+/* max-width: 70vw; */
+/* max-height: 50vh; */
+/* } */
 .short-info-cont {
   padding: 3rem 1rem 0 1rem;
   grid-area: shortinfo;
