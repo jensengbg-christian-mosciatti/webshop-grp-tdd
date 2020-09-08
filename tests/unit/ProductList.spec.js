@@ -1,14 +1,14 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Products from '@/components/ProductList.vue'
 import productList from '@/assets/db/products/products.json'
 
 describe('ProductList.vue', () => {
-  let wrapper
+  let wrapper;
   beforeEach(() => {
     wrapper = shallowMount(Products, {
       propsData: {
-        productDataList: productList,
-      },
+        productDataList: productList
+      }
     })
   })
 
@@ -53,6 +53,7 @@ describe('ProductList.vue', () => {
   })
 
   // Som användare vill jag se detaljen på produkten i en separat sida
+  // Som användare vill jag kunna klicka på produkten för att se den i detalj
     it('should display details of the product on a new page when clicked on', async () => {
       const $route = {
         path: '/productdetails'
@@ -61,24 +62,19 @@ describe('ProductList.vue', () => {
       const wrapper = shallowMount(Products, {
         mocks: {
           $route
+        },
+        propsData: {
+          productDataList: productList
         }
       })
 
-      //wrapper.findAll('.detail-button').setValue(productList);
+      const detailButton = wrapper.find('.detail-button');
 
-      //await detailButton.trigger('click');
+      await detailButton.trigger('click');
+
+      wrapper.emitted()
+      expect(wrapper.emitted()).toBeTruthy()
 
       wrapper.vm.$route.productdetails
     })
-
-    // Som användare vill jag kunna klicka på produkten för att se den i detalj
-    //it('should display details of the product when clicked on', async () => {
-
-      //wrapper.findAll('.detail-button').trigger('click');
-      //const detailButton = await wrapper.findAll('.detail-button').trigger('click');
-
-      //await detailButton.trigger('click');
-
-      //expect(productList.called).toBe(true)
-    //})
 })
