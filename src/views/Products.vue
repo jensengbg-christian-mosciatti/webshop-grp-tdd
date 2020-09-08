@@ -43,12 +43,22 @@ export default {
     searched() {
       this.showSearch = false
     },
-    example(param) {
-      this.filteredList = param
-      this.showSearch = !this.showSearch
+    example() {
+      let parsedData = JSON.parse(sessionStorage.getItem("filtered"))
+      this.filteredList = parsedData
+      this.showSearch = false
     },
     //productList: this.$store.state.productList
   },
+  mounted() {
+    if(sessionStorage.getItem("filtered")) {
+      let parsedData = JSON.parse(sessionStorage.getItem("filtered"))
+      this.filteredList = parsedData
+    } else {
+      return
+    }
+      
+  }
 }
 </script>
 
