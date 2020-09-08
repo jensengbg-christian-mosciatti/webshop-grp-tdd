@@ -1,23 +1,23 @@
 <template>
   <section>
-    <h1>Products</h1>
-    <!-- <button v-on:click="getProductData">Show Products</button> -->
-    <div v-for="productData in productDataList" :key="productData.id" class="product-data">
-      <div @click="goToDetails(productData.id)" class="product-stats detail-button">
-        <div class="image">
+    <section v-for="productData in productDataList" :key="productData.id" class="product-data">
+      <section @click="goToDetails(productData.id)" class="product-stats detail-button">
+        <section class="image">
           <img :src="productData.img" alt="products" />
-        </div>
-        <div class="brand size">
-          <span>{{ productData.brand }} | {{ productData.size }}</span>
-        </div>
-        <div class="type">
-          <span>{{ productData.type }}</span>
-        </div>
-        <div class="price">
-          <span>{{ productData.price }} kr</span>
-        </div>
-      </div>
-    </div>
+        </section>
+        <section class="product-info">
+          <section class="brand size">
+            <span class="gray font">{{ productData.brand }} | {{ productData.size }}</span>
+          </section>
+          <section class="type">
+            <span class="font">{{ productData.type }}</span>
+          </section>
+          <section class="price">
+            <span class="font color">{{ productData.price }} kr</span>
+          </section>
+        </section>
+      </section>
+    </section>
   </section>
 </template>
 
@@ -35,49 +35,71 @@ export default {
   methods: {
     goToDetails(id) {
       this.$router.push({ name: 'productdetails', params: { id: Number(id) } })
-    },
-    // getProductData() {
-    //   fetch('products.json')
-    //     .then(response => response.json())
-    //     .then(data => (this.productDataList = data))
-    // },
+    }
   },
 }
 </script>
 
-<style scoped>
-.product-data {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  border-bottom: 2px solid #ccc;
-  padding: 20px;
-  cursor: pointer;
-}
+<style lang="scss" scoped>
+    .product-data {
+        padding: 20px;
+        cursor: pointer;
+        line-height: 2em;
+    }
 
-.image {
-  flex-grow: 1;
-}
+    .product-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
 
-.product-stats {
-  flex-grow: 8;
-  text-align: left;
-  padding-left: 20px;
-}
+    img {
+        width: 10em;
+    }
 
-.product-stats .brand .size .type .price {
-  font-size: 30px;
-}
+    .detail-button {
+        background-color: #ffffff;
+        color: #000000;
+    }
 
-img {
-  width: 70px;
-}
+    .gray {
+        color: lightgray;
+    }
 
-button {
-  padding: 10px;
-  background-color: #1aa832;
-  color: white;
-  border: 1px solid #ccc;
-}
+    .font {
+      font-size: 15px;
+    }
+
+    .color {
+      color: #66c52b;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .product-data {
+        line-height: 2.5em;
+      }
+
+      .product-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        border-bottom: 2px solid lightgray;
+      }
+
+      .product-info {
+        display: flex;
+        flex-direction: column;
+        padding: 5em;
+      }
+
+      img {
+          width: 20em;
+        }
+
+      .font {
+        font-size: 30px;
+      }
+    }
 </style>
