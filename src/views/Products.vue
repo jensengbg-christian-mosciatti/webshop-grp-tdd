@@ -27,7 +27,7 @@ export default {
     return {
       productList: this.$store.state.productList,
       showSearch: false,
-      filteredList: '',
+      filteredList: this.$store.state.productList,
     }
   },
   computed: {
@@ -51,7 +51,13 @@ export default {
     //productList: this.$store.state.productList
   },
   mounted() {
-    this.example()
+    if(sessionStorage.getItem("filtered")) {
+      let parsedData = JSON.parse(sessionStorage.getItem("filtered"))
+      this.filteredList = parsedData
+    } else {
+      return
+    }
+      
   }
 }
 </script>

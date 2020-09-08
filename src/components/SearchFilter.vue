@@ -51,11 +51,11 @@ export default {
       //let brandList = []
       if (this.brand.length) {
         productsCopy = productsCopy.filter(el => {/*console.log();*/ return el.brand === this.brand})
-        //console.log("In the brand if", productsCopy)
+        console.log("In the brand if", productsCopy)
       }
       if (this.shoeSizeClass.length) {
         productsCopy = productsCopy.filter(el => el.size === this.shoeSizeClass)
-         //console.log('In the size if', productsCopy)
+         console.log('In the size if', productsCopy)
       }
         this.filteredList = productsCopy
         let parsed = JSON.stringify(this.filteredList)
@@ -286,10 +286,6 @@ h1 {
     grid-row: 6/7;
     min-width: 400px;
     justify-self: center;
-  
-  }
-
-  input[type=range] {
   
   }
 }
