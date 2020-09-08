@@ -3,9 +3,9 @@
     <button class="menu" v-on:click="showOrClose">
       <i id="exit-cross" class="far fa-times-circle"></i>
     </button>
-    <!-- <input type="text" id="search-input" class="search-field" v-model="userInput" /> -->
+     <!-- <input type="text" id="search-input" class="search-field" v-model="userInput" /> -->
     <label id="shoe-size-category">
-      <p>Storlekstyp: {{ shoeSizeClass }}</p>
+      <p> Storlekstyp: {{ shoeSizeClass }}</p>
       <input type="range" id="shoeSize-range" min="0" max="2" v-model="sizeClass" />
     </label>
     <!-- <label id="shoe-size">
@@ -14,14 +14,14 @@
       <input type="range" id="adults-range" min="36" max="47" v-model="size" v-else /> 
     </label> -->
     <label id="basis-type">
-      <p>Underlag: {{ basis }}</p>
-      <input type="range" id="basis-range" min="0" max="3" v-model="basisType" />
+      <p> Underlag: {{ basis }}</p>
+      <input type="range" id="basis-range" min="0" max="3" v-model="basisType"/>
     </label>
     <label id="shoe-brand">
-      <p>Märke: {{ brand }}</p>
-      <input type="range" id="brand-range" min="0" max="3" v-model="shoeBrand" />
+      <p> Märke: {{ brand }}</p>
+      <input type="range" id="brand-range" min="0" max="3" v-model="shoeBrand"/>
     </label>
-    <button class="search" v-on:click="searched"><h1>SÖK</h1></button>
+    <button class="search" v-on:click="searched"> <h1> SÖK </h1> </button>
   </div>
 </template>
 
@@ -29,17 +29,18 @@
 export default {
   data: function() {
     return {
-      userInput: '',
-      sizeClass: '',
-      kids: '',
-      size: '',
-      basisType: '',
-      shoeBrand: '',
-      filteredList: [],
+        userInput: '',
+        sizeClass: '',
+        kids: '',
+        size: '',
+        basisType: '',
+        shoeBrand: '',
+        filteredList: [],
+        sessionFilter: ''
     }
   },
   props: {
-    products: Array,
+    products: Array
   },
   methods: {
     async showOrClose() {
@@ -49,30 +50,26 @@ export default {
       let productsCopy = this.products
       //let brandList = []
       if (this.brand.length) {
-        productsCopy = productsCopy.filter(el => {
-          /*console.log();*/ return el.brand === this.brand
-        })
+        productsCopy = productsCopy.filter(el => {/*console.log();*/ return el.brand === this.brand})
         //console.log("In the brand if", productsCopy)
       }
       if (this.shoeSizeClass.length) {
         productsCopy = productsCopy.filter(el => el.size === this.shoeSizeClass)
-        //console.log('In the size if', productsCopy)
+         //console.log('In the size if', productsCopy)
       }
-      //console.log(productsCopy)
-      /*let obj = {
-          size: this.size,
-          basis: this.basis
-        }*/
-      this.filteredList = productsCopy
-      return this.$emit('filtered', this.filteredList)
+        this.filteredList = productsCopy
+        let parsed = JSON.stringify(this.filteredList)
+        sessionStorage.setItem("filtered", parsed)
+        return this.$emit("filtered", this.filteredList)
     },
     kidsSize() {
-      if (this.sizeClass == 2) {
+      if(this.sizeClass == 2) {
         this.kids = true
         return true
-      } else this.kids = false
-      return false
-    },
+      } else 
+        this.kids = false
+        return false
+    }
   },
   computed: {
     shoeSizeClass() {
@@ -80,7 +77,7 @@ export default {
       if (this.sizeClass == '') {
         return ''
       }
-      return array[this.sizeClass]
+        return array[this.sizeClass]
     },
     shoeSize() {
       // Edit bump
@@ -93,7 +90,7 @@ export default {
         return 'Konstgräs'
       } else if (this.basisType == 3) {
         return 'Inomhus'
-      }
+      } 
       return ''
     },
     brand() {
@@ -102,14 +99,27 @@ export default {
         return ''
       }
       return array[this.shoeBrand]
-    },
+    }
   },
   watch: {
-    sizeClass: async function() {
+    sizeClass: async function () {
       let promise = await this.kidsSize()
       console.log(promise)
-    },
+    }
   },
+  mounted() {
+    let parsed = JSON.stringify(this.filteredList)
+    //sessionStorage.setItem("filtered", parsed)
+    if (sessionStorage.getItem("filtered")) {
+      let data = JSON.parse(sessionStorage.getItem("filtered"));
+      return this.sessionFilter = data
+    } 
+    else {
+      sessionStorage.setItem('filtered', parsed)
+      console.log(parsed)
+      return
+    }
+  }
 }
 </script>
 
@@ -125,7 +135,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  padding: 0px;
 }
 
 .menu {
@@ -152,7 +161,7 @@ export default {
   grid-column: 2/5;
 }
 
-input[type='range'] {
+input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: black; /* Otherwise white in Chrome */
@@ -161,35 +170,36 @@ input[type='range'] {
   border-radius: 10px;
 }
 
-input[type='range']::-webkit-slider-thumb {
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #66c52b;
+  border: 1px solid #66C52B;
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: #66c52b;
+  background: #66C52B;
   cursor: pointer;
 }
 
 /* All the same stuff for Firefox */
-input[type='range']::-moz-range-thumb {
+input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #66c52b;
+  border: 1px solid #66C52B;
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: #66c52b;
+  background: #66C52B;
   cursor: pointer;
 }
 
 /* All the same stuff for IE */
-input[type='range']::-ms-thumb {
+input[type=range]::-ms-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #66c52b;
+  border: 1px solid #66C52B;
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: #66c52b;
+  background: #66C52B;
   cursor: pointer;
 }
 
@@ -200,9 +210,6 @@ label {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  align-self: center;
-  min-width: 250px;
 }
 
 p {
@@ -215,7 +222,7 @@ p {
 }
 
 h1 {
-  color: var(--button-text-color);
+  color: var(--button-text-color)
 }
 
 #shoe-size-category {
@@ -249,44 +256,5 @@ h1 {
   height: 50px;
   border: 1px solid black;
   border-radius: 2px;
-  justify-self: center;
-  align-self: center;
-  min-width: 250px;
-}
-
-@media only screen and (min-width: 500px) {
-  .search-overlay {
-    justify-content: center;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-  }
-
-  #shoe-size-category {
-    grid-row: 3/4;
-    grid-column: 2/5;
-  }
-
-  #basis-type {
-    grid-row: 4/5;
-    grid-column: 2/5;
-  }
-
-  #shoe-brand {
-    grid-row: 5/6;
-    grid-column: 2/5;
-  }
-  
-  label {
-    justify-self: center;
-    min-width: 300px;
-    justify-content: center
-  }
-
-  .search {
-    min-width: 300px;
-    align-self: center;
-    justify-self: center;
-    grid-row: 6/7;
-  }
 }
 </style>
