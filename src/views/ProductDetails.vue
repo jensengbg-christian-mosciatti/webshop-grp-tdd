@@ -8,7 +8,7 @@
     <div class="grid-cont" v-else>
       <div class="img-cont">
         <div>
-          <!-- <img class="logo-img" :src="" :alt="productById.type" /> -->
+          <img class="logo-img" :src="`/logos/${productById.brand}-logo.svg`" :alt="productById.type" />
           <img class="main-img" :src="currentImg.url ? currentImg.url : productById.img" :alt="productById.type" />
           <div class="img-thumbnails">
             <img
@@ -28,7 +28,7 @@
         <p class="item-brand">{{ productById.brand }}</p>
         <h2 class="item-price">{{ productById.price }} kr</h2>
       </div>
-      <div class="sizes-container"></div>
+      <!-- <div class="sizes-container"></div> -->
       <div class="cart-btn-cont">
         <button @click="addToCart">Add to cart</button>
       </div>
@@ -116,14 +116,21 @@ main {
     'longinfo longinfo';
 }
 
-/* .img-cont { */
-/* grid-area: pictures; */
-/* padding: 0.8rem; */
-/* } */
-/* .main-img { */
-/* max-width: 70vw; */
-/* max-height: 50vh; */
-/* } */
+.img-cont {
+  grid-area: pictures;
+  padding: 0.8rem;
+  position: relative;
+}
+.logo-img {
+  position: absolute;
+  right: 0.5rem;
+  max-width: 100px;
+  width: 20vw;
+}
+.main-img {
+  max-width: 70vw;
+  max-height: 50vh;
+}
 .short-info-cont {
   padding: 3rem 1rem 0 1rem;
   grid-area: shortinfo;
