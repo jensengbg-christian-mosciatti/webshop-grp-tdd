@@ -23,11 +23,9 @@
       </div>
 
       <div class="short-info-cont">
-        <!-- <div class="type-price-cont"> -->
         <h3 class="item-type">{{ productById.type }}</h3>
         <p class="item-brand">{{ productById.brand }}</p>
         <h2 class="item-price">{{ productById.price }} kr</h2>
-        <!-- </div> -->
       </div>
       <div class="sizes-container"></div>
       <div class="cart-btn-cont">
@@ -172,12 +170,6 @@ main {
   border: 1px solid grey;
   transform: scale(1.2);
 }
-
-/* .type-price-cont {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 @media only screen and (min-width: 880px) {
   .grid-cont {
