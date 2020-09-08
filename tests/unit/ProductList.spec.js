@@ -62,14 +62,18 @@ describe('ProductList.vue', () => {
       const wrapper = shallowMount(Products, {
         mocks: {
           $route
+        },
+        propsData: {
+          productDataList: productList
         }
       })
 
-      const detailButton = wrapper.findAll('.detail-button').at(0);
+      const detailButton = wrapper.find('.detail-button');
 
       await detailButton.trigger('click');
 
-      //expect(detailButton.length).toBe(true);
+      wrapper.emitted()
+      expect(wrapper.emitted()).toBeTruthy()
 
       wrapper.vm.$route.productdetails
     })
