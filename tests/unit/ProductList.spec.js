@@ -1,10 +1,9 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import Products from '@/components/ProductList.vue'
 import productList from '@/assets/db/products/products.json'
-import filterButton from '@/views/Products.vue'
 
 describe('ProductList.vue', () => {
-  let wrapper
+  let wrapper;
   beforeEach(() => {
     wrapper = shallowMount(Products, {
       propsData: {
@@ -66,7 +65,7 @@ describe('ProductList.vue', () => {
         }
       })
 
-      const detailButton = wrapper.findAll('#button');
+      const detailButton = wrapper.findAll('.detail-button').at(0);
 
       await detailButton.trigger('click');
 
