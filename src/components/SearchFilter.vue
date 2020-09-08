@@ -168,6 +168,7 @@ input[type=range] {
   border: 1px black solid;
   height: 10px;
   border-radius: 10px;
+  max-width: 97%;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -256,5 +257,40 @@ h1 {
   height: 50px;
   border: 1px solid black;
   border-radius: 2px;
+}
+
+@media only screen and (min-width: 500px) {
+  .search-overlay {
+    grid-template-rows: repeat(8, 1fr)
+  }
+
+  #shoe-size-category {
+  grid-row: 3/4;
+  min-width: 400px;
+  justify-self: center;
+  }
+
+  #basis-type {
+    grid-row: 4/5;
+    min-width: 400px;
+    justify-self: center;
+  }
+
+  #shoe-brand {
+    grid-row: 5/6;
+    min-width: 400px;
+    justify-self: center;
+  }
+
+  .search {
+    grid-row: 6/7;
+    min-width: 400px;
+    justify-self: center;
+  
+  }
+
+  input[type=range] {
+  
+  }
 }
 </style>
