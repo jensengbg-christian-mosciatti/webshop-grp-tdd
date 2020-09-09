@@ -46,7 +46,7 @@
         <h3 class="shipping">{{ defaultShippingCost }} Kr</h3>
       </div>
       <!-- <button @click="addToCart">Add To Cart</button> -->
-      <button @click="checkout">CHECKOUT</button>
+      <button class="checkout-btn" @click="checkout">CHECKOUT</button>
     </div>
   </div>
 </template>

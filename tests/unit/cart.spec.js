@@ -9,7 +9,7 @@ const cartData = [
     brand: 'adidas',
     type: 'Predator 20.3 LL FG J fotbollsskor',
     qty: 2,
-    unitPrice: 699,
+    price: 699,
     totalPrice: 699,
     size: 35,
   },
@@ -19,7 +19,7 @@ const cartData = [
     brand: 'adidas',
     type: 'Predator Mutator 20+ FG M fotbollsskor',
     qty: 2,
-    unitPrice: 2949,
+    price: 2949,
     totalPrice: 2949,
     size: 40,
   },
@@ -107,5 +107,15 @@ describe('Test for shopping cart', () => {
     const elementCountAfter = wrapper.findAll('li').length
     expect(elementCountBefore).toBe(2)
     expect(elementCountAfter).toBe(1)
+  })
+  it('the shopping cart should allow to checking out the order pushing a button', async () => {
+    const elementCountBefore = wrapper.findAll('li').length
+
+    const checkoutBtn = wrapper.find('.checkout-btn')
+    await checkoutBtn.trigger('click')
+    const elementCountAfter = wrapper.findAll('li').length
+
+    expect(elementCountBefore).toBeGreaterThan(0)
+    expect(elementCountAfter).toBe(0)
   })
 })
