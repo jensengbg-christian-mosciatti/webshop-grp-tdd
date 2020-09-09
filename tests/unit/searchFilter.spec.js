@@ -1,5 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import SearchFilter from "@/components/SearchFilter.vue";
+import productData from '@/assets/db/products/products.json'
 //import '@testing-library/jest-dom'
 
 
@@ -16,7 +17,6 @@ describe("SearchFilter.vue", () => {
 
 /*
 Som användare vill jag kunna filtrera listan.
-Som användare vill jag ha enkel tillgång till sökfunktionen.
 Som användare vill jag att filtret ska ge mig möjlighet att välja underlag.
 Som användare vill jag att filtret ska ge mig möjlighet att välja märke.
 Som användare vill jag att filtret ska ge mig möjlighet att välja storleksklass.
@@ -47,23 +47,6 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
     })
 
 
-    // Input fältet's tester
-    it("should show the inputfield when loaded", () => {
-        const inputField = wrapper.get(".search-field");
-        expect(inputField.exists()).toBe(true)
-    })
-
-    it("should take and store the input data", async () => {
-        const inputField = wrapper.get(".search-field");
-        let expected = "Nike";
-        await inputField.setValue(expected)
-
-        let actual= wrapper.vm.userInput;
-
-        expect(actual).toBe(expected)
-    })
-
-
     // Filtreringens tester
     it("should show the filters when loaded", () => {
         const button = wrapper.findAll('input[type="range"]');
@@ -81,7 +64,7 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         expect(expected).toBe(actual)
     })
 
-    it("should update the shoe-size filter when the range slider is moved", async () => {
+    /*it("should update the shoe-size filter when the range slider is moved", async () => {
         const inputRange = wrapper.get("#adults-range")
         let testChoice = 30;
         inputRange.setValue(testChoice)
@@ -89,15 +72,15 @@ Som användare vill jag att filtret ska ge mig möjlighet att välja storlekskla
         let actual = wrapper.vm.size
 
         expect(expected).toBe(actual)
-    })
+    })*/
 
-    it("should display the kids-range when size class 'kids' is selected", async () => {
+    /*it("should display the kids-range when size class 'kids' is selected", async () => {
         const input = wrapper.get("#shoeSize-range");
         await input.setValue(2)
 
         let expected = wrapper.get("#kids-range");
         expect(expected.exists()).toBe(true)
-    })
+    })*/
 
     it("should update the basis-type filter when the range slider is moved", async () => {
         const inputRange = wrapper.findAll("#basis-range")
