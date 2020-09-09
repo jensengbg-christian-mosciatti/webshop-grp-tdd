@@ -17,7 +17,6 @@ describe("SearchFilter.vue", () => {
 
 /*
 Som användare vill jag kunna filtrera listan.
-Som användare vill jag ha enkel tillgång till sökfunktionen.
 Som användare vill jag att filtret ska ge mig möjlighet att välja underlag.
 Som användare vill jag att filtret ska ge mig möjlighet att välja märke.
 Som användare vill jag att filtret ska ge mig möjlighet att välja storleksklass.
