@@ -1,1 +1,58 @@
+GRUPP 7
+Gruppmeldemmar: Henrik Johansson, Christian Mosciatti, Johanna Örnberg
+Klass: FRK19G
+
+Github Repo: https://github.com/jensengbg-christian-mosciatti/webshop-grp-tdd/tree/dev (REPORT.txt ligger i repot)
+Figma: https://www.figma.com/file/wcFI50q03MvqnOpjrceLj3/Webshop?node-id=0%3A1
+Kravspec + Userstores: https://docs.google.com/document/d/1WbRLmEAdZFUrP-fFjm3bob9joYe1HFXAQXAk9laZ0k4/edit?usp=sharing
+
+Retrospective i synopsis:
+    Vi har lärt oss:
+        - Att man inte ska ha bråttom, planera och strukturera i godtid 
+        - Att kommunicera lite bättre
+        - Skriva testet på ett bättre sätt och fördjupa våra kunskaper i det
+
+    Hur fördelade vi arbetet:
+        - Henrik tog hand om filter funktione och dess sida
+        - Christian hade ansvar för shoppingcart och detaljsildan
+        - Johanna jobbade med produktlistan
+
+    Vad ska vi börja göra?:
+        - Planera våra arbeten lite bättre
+        - Mer planering på komponenter
+        - Mer idér att bolla och diskutera
+
+    Vad ska vi sluta göra?:
+        - Arbeta utan planer
+        - Spendera mer tid i röstkanalen än textkanalen för kommunikation
+
+    Vad ska vi fortsätta göra?:
+        - Googla
+        - Ta hjälp av varanda
+        - Standupp möten
+
+    Vilka krav var svårast/lättast?
+        Svårast:
+            - Att skriva testfall för input range i filtreringen
+            - Att komma på hur man skulle testa localStorage
+            - Att testa vue router
+
+        Lättast:
+            - Att testa om något syns på sidan
+            - Krav som man bara behövde klicka i
+            - Krav som bara behövde emitta något
+
+    Fanns det något vi hade tänkt göra som vi inte hann?: 
+        - En about sida
+        - En landing sida
+        - En hamburgarmeny
+        - Tillbaka knappar
+        - Ett inputfält för att söka
+        - En enkelt sätt att återställa filtreringen
+        - Att man ska kunna välja storleken på skorna
+
+        Varför hann vi inte med det?:
+            - För lite tid
+            - För lite planering
+            - För lite kunskap
 
