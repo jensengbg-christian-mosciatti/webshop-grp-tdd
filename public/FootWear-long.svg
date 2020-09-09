@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="143.96677"
+   height="55.323463"
+   viewBox="0 0 38.091205 14.637667"
+   version="1.1"
+   id="svg8">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <g
+       id="g924"
+       transform="translate(-30.293733,-12.016347)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0.396875px;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.555625;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         x="30.070286"
+         y="26.35553"
+         id="text16"><tspan
+           id="tspan14"
+           x="30.070286"
+           y="26.35553"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Uroob;-inkscape-font-specification:'Uroob Bold';fill:none;stroke:#000000;stroke-width:0.555625;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal">FOOTWEAR</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0.396875px;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.555625;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         x="35.219994"
+         y="18.913889"
+         id="text16-3"><tspan
+           id="tspan14-9"
+           x="35.219994"
+           y="18.913889"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Uroob;-inkscape-font-specification:'Uroob Bold';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.555625;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal">SOCCER</tspan></text>
+    </g>
+  </g>
+</svg>
