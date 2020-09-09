@@ -116,7 +116,7 @@ export default {
     } 
     else {
       sessionStorage.setItem('filtered', parsed)
-      console.log(parsed)
+      //console.log(parsed)
       return
     }
   }
